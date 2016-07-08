@@ -180,14 +180,6 @@ Do you have git for some reason? That's pretty cool. Let's install [Honey Cat](h
 $ git clone https://github.com/picatz/Honey-Cat
 ```
 
-## Curl + Github Raw
-
-Do you at least have some sort access to the Internet? Is your local file you want to copy possibly on github too? For example, if you wanted to install [Honey Cat](https://github.com/picatz/Honey-Cat) using github raw. 
-
-```
-curl https://raw.githubusercontent.com/picatz/Honey-Cat/master/hcat.sh >> /path/to/local/hcat.sh
-```
-
 ### Install Git
 
 #### Debian
@@ -198,3 +190,11 @@ $ sudo apt-get install git-all
 #### RHEL/CentOS 
 ```
 $ sudo yum install git-all
+
+## Curl + Github Raw
+
+Do you at least have some sort access to the Internet? Is your local file you want to copy possibly on github too? For example, if you wanted to install [Honey Cat](https://github.com/picatz/Honey-Cat) using github raw. 
+
+```
+curl https://raw.githubusercontent.com/picatz/Honey-Cat/master/hcat.sh >> /path/to/local/hcat.sh
+```
