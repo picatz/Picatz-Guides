@@ -50,7 +50,7 @@ $ which iptables
 $ sudo apt-get install iptables
 
 # Reinstall on Debian:
-$ sudo apt-get --reinstall install iptables
+$ sudo apt-get --reinstall iptables
 
 ```
 
@@ -696,9 +696,9 @@ $ iptables -A INPUT -p tcp --syn -m multiport --dports $FTP -m recent --name ftp
 $ iptables -A INPUT -p tcp --syn -m multiport --dports $FTP -m recent --name ftp_attack --rcheck --seconds 60 --hitcount 5 -j REJECT --reject-with tcp-reset
 ```
 
-#### Flush current tables
+#### Drop Broadcast
 
-All hosts ( broadcast address , multicast address ) addressed to the packet are discarded.
+Drop packets going to ( broadcast, multicast ) addreses.
 
 ```
 $ iptables -A INPUT -d 192.168.1.255   -j LOG --log-prefix "drop_broadcast: "
@@ -709,14 +709,13 @@ $ iptables -A INPUT -d 224.0.0.1       -j LOG --log-prefix "drop_broadcast: "
 $ iptables -A INPUT -d 224.0.0.1       -j DROP
 ```
 
-#### All communication once a session establishment is allowed.
+#### All communication once a session established is allowed.
 
 ```
 $ iptables -A INPUT  -p tcp -m state --state ESTABLISHED,RELATED -j ACCEPT
 ```
 
-#### Mitigate Steal scan
-
+#### Mitigate Stealth Scan
 
 Create a chain with the name STEALTH_SCAN
 
