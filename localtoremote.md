@@ -100,18 +100,6 @@ sftp> put /path/to/local/file.txt
 sftp> exit 
 ```
 
-### Install Sftp
-
-#### Debian
-```
-$ sudo apt-get install rsync
-```
-
-#### RHEL/CentOS 
-```
-$ sudo yum install rsync
-```
-
 ---
 
 ## SCP
@@ -170,7 +158,7 @@ ftp> put /path/to/local/file.txt
 ftp> exit 
 ```
 
-### Install Sftp
+### Install FTP
 
 #### Debian
 ```
@@ -199,3 +187,14 @@ Do you at least have some sort access to the Internet? Is your local file you wa
 ```
 curl https://raw.githubusercontent.com/picatz/Honey-Cat/master/hcat.sh >> /path/to/local/hcat.sh
 ```
+
+### Install Git
+
+#### Debian
+```
+$ sudo apt-get install git-all
+```
+
+#### RHEL/CentOS 
+```
+$ sudo yum install git-all
