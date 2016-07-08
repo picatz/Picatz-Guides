@@ -4,8 +4,8 @@ This is a somewhat comprehensive guide on how to copy files locally stored on yo
 
 ---
 
-Remote server's IP for this guide : 192.168.4.10
-User for this guide : user 
+- Remote server's IP for this guide : 192.168.4.10
+- User for this guide : user 
 
 ---
 
@@ -44,10 +44,10 @@ $ sudo apt-get install openssh-sftp-server
 #### Windows 
 
 I'm sorry... I recommend: 
-[MobaXterm](http://mobaxterm.mobatek.net/)
-[Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-[Cygwin](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-[OpenSSH for Windows](https://winscp.net/eng/docs/guide_windows_openssh_server)
+- [MobaXterm](http://mobaxterm.mobatek.net/)
+- [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+- [Cygwin](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+- [OpenSSH for Windows](https://winscp.net/eng/docs/guide_windows_openssh_server)
 
 ---
 
