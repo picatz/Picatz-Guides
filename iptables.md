@@ -98,7 +98,7 @@ $ rpm -qi iptables | grep "Version"
 
 Run on a Debian 8 box, starting from a user without sudo/root privilege: 
 
-<img src="SetupCheckIptables.gif" width="532" height="310">
+<img src="SetupCheckIptables.gif">
 
 
 ---
@@ -808,16 +808,6 @@ $ iptables --append LOGGING --jump DROP
 ```
 
 #### Seperate Logging
-
-```
-## LOGGING
-# You don't have to split up your logging like I do below, but I prefer to do it this way
-# because I can then grep for things in the logs more easily. One thing you probably want
-# to do is rate-limit the logging. I didn't do that here because it is probably best not too
-# when you first set things up ................. you actually really want to see everything going to
-# the logs to work out what isn't working and why. You cam implement logging with
-# "-m limit --limit 6/h --limit-burst 5" (or similar) before the -j LOG in each case.
-#
 
 Any udp not already allowed is logged and then dropped.
 
