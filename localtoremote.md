@@ -190,6 +190,7 @@ $ sudo apt-get install git-all
 #### RHEL/CentOS 
 ```
 $ sudo yum install git-all
+```
 
 ## Curl + Github Raw
 
