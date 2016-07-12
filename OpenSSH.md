@@ -877,12 +877,25 @@ VisualHostKey yes
 
 ---
 
-## 
+### ssh-keyscan 
 
+[ssh-keyscan](http://man.openbsd.org/OpenBSD-current/man1/ssh-keyscan.1) is a utility for gathering the public ssh host keys of a number of hosts.  It was designed to aid in building and verifying ssh_known_hosts files.  ssh-keyscan provides a minimal interface suitable for use by shell scripts.
+
+#### Examples
+
+Print the rsa host key for machine hostname:
+
+```
+$ ssh-keyscan hostname
+```
+
+Find all hosts from the file ssh_hosts which have new or different keys from those in the sorted file ssh_known_hosts:
+
+```
+$ ssh-keyscan -t rsa,dsa,ecdsa,ed25519 -f ssh_hosts | sort -u - ssh_known_hosts | diff ssh_known_hosts -
+```
 
 ---
-
-
 
 ## Helpful Links
 
