@@ -716,7 +716,7 @@ CanonicalizeMaxDots 1
 Specifies whether X11 connections will be automatically redirected over the secure channel and DISPLAY set.  The argument must be 'yes' or 'no'.  The default is 'no'.
 
 ```
-CanonicalizeMaxDots no
+X11Forwarding no
 ```
 
 #### CheckHostIP

@@ -39,7 +39,7 @@ AddressFamily inet
 CanonicalizeMaxDots 1
 
 # Disable ForwardX11
-CanonicalizeMaxDots no
+X11Forwarding no
 
 # Detect if a host key changed due to DNS spoofing
 # will add addresses of destination hosts to ~/.ssh/known_hosts 
