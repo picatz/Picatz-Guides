@@ -10,6 +10,16 @@ This is a somewhat comprehensive guide for OpenSSH a suite of tools that serve a
 
 ---
 
+### Configs
+
+OpenSSH Daemon Configuration File:
+- [sshd_config](resources/openssh/sshd_config)
+
+OpenSSH Client Configuration File:
+- [ssh_config](resources/openssh/ssh_config)
+
+---
+
 #### OpenSSH Suite
 
 ```
@@ -519,7 +529,7 @@ PrintLastLog yes
 If you want to allow SSH connection to be accepted from specific IP addresses, you can add the ListenAddress:
 
 ```
-PrintLastLog yes
+ListenAddress 192.168.3.4
 ```
 
 #### Disable UseDNS
@@ -725,7 +735,7 @@ Specifies the ciphers allowed for protocol  version 2 in order of preference.  M
 Ciphers aes256-ctr
 ```
 
-#### Ciphers
+#### Compression
 
 Specifies whether to use compression.  The  argument must be 'yes' or 'no'.  The default is 'no'.
 
@@ -763,14 +773,6 @@ Specifies the available MAC (message authentication code) algorithms.  The MAC a
 
 ```
 MACs hmac-sha2-512 
-```
-
-#### NumberOfPasswordPrompts
-
-Specifies the number of password prompts before giving up. The argument to this keyword must be an integer. The default is 3.
-
-```
-NumberOfPasswordPrompts 3
 ```
 
 #### NumberOfPasswordPrompts
@@ -821,14 +823,6 @@ Specifies whether to try public key authentication.  The argument to this keywor
 PubkeyAuthentication yes
 ```
 
-#### PubkeyAuthentication
-
-Specifies whether to try public key authentication.  The argument to this keyword must be 'yes' or 'no'.  The default is 'yes'.
-
-```
-PubkeyAuthentication yes
-```
-
 #### StrictHostKeyChecking
 
 If  this flag is set to 'yes', ssh will never automatically add host keys to the ~/.ssh/known_hosts file, and refuses to connect to hosts whose host key has changed. This provides maximum protection against trojan horse attacks, though it can be annoying when the /etc/ssh/ssh_known_hosts file is poorly maintained or when connections to new hosts are frequently made. This option forces the user to manually add all new hosts.  If this flag is set to 'no', ssh will automatically add new host keys to the user known hosts files.  If this flag is set to 'ask', new host keys will be added to the user known host files only after the user has confirmed that is what they really want to do, and ssh will refuse to connect to hosts whose host key has changed. The host keys of known hosts will be verified automatically in all cases.  The argument must be 'yes', 'no', or 'ask'.  The default is 'ask'.
@@ -837,7 +831,7 @@ If  this flag is set to 'yes', ssh will never automatically add host keys to the
 StrictHostKeyChecking yes
 ```
 
-#### StrictHostKeyChecking
+#### TCPKeepAlive
 
 Specifies whether the system should send TCP keepalive messages to the other side.  If they are sent, death of the connection or crash of one of the machines will be properly noticed.  However, this means that connections will die if the route is down temporarily, and some people find it annoying.
 

@@ -1,0 +1,82 @@
+#################################################################
+#																#
+# FILE : /etc/ssh/ssh_config									#
+# 																#
+# Kent 'picat' Gruber											#
+#																#
+# 青 O p e n S S H   C l i e n t 								#
+#																#
+# This is a blue team configuration for the OpenSSH client.		#
+# Configuration should be manually audited before 				#
+# implementing on a server. Configurations has been made		#
+# for defense in a compeition setting. 							#
+#																#
+# Use at your own risk, and be safe!							#
+# 																#
+# Configuration::  Kent 'picat' Gruber 							#
+#         Guide::  OpenSSH.md 									#
+#																#
+#################################################################
+
+
+# Specifies whether to use password authentication.
+# Turn off with 'no' when ssh keys are set up.
+PasswordAuthentication yes
+
+# Specifies preferred authetnication methods
+PreferredAuthentications publickey,hostbased,password
+
+# Specifies the key types that will be used for public key authentication
+PubkeyAcceptedKeyTypes ssh-rsa
+
+# Specifies whether to try public key authentication.
+PubkeyAuthentication yes
+
+# Restrict to IPv4
+AddressFamily inet
+
+# CanonicalizeMaxDots
+CanonicalizeMaxDots 1
+
+# Disable ForwardX11
+CanonicalizeMaxDots no
+
+# Detect if a host key changed due to DNS spoofing
+# will add addresses of destination hosts to ~/.ssh/known_hosts 
+CheckHostIP yes
+
+# ssh will never automatically add host keys to the ~/.ssh/known_hosts file, 
+# and refuses to connect to hosts whose host key has changed.
+# This provides maximum protection against trojan horse attacks, 
+# though it can be annoying when the /etc/ssh/ssh_known_hosts file is poorly maintained
+# StrictHostKeyChecking yes
+
+# Specifies the ciphers allowed for protocol version 2
+Ciphers aes256-ctr
+
+# Specify wheter or not to use compression
+# Compression yes
+
+# Specify CompressionLevel if compression is set
+# Range 1 ( fast ) - 9 ( slow )
+# CompressionLevel 5
+
+# Specifies the number of tries (one per second) to make before exiting
+ConnectionAttempts 1
+
+# Set logging level
+LogLevel VERBOSE
+
+# Specifies message authentication code algorithm
+MACs hmac-sha2-512 
+
+# Set number of password prompts ( if that's what's going on ) to more than 3
+NumberOfPasswordPrompts 50
+
+# Specifies whether the system should send TCP keepalive message
+TCPKeepAlive yes
+
+# Display ASCII art representation of the remote host key fingerprint
+VisualHostKey yes
+
+

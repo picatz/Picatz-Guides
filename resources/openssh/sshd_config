@@ -1,0 +1,123 @@
+#################################################################
+#																#
+# FILE : /etc/ssh/sshd_config									#
+# 																#
+# Kent 'picat' Gruber											#
+#																#
+# 青 O p e n S S H   D a e m o n 								#
+#																#
+# This is a blue team configuration for the OpenSSH daemon.		#
+# Configuration should be manually audited before 				#
+# implementing on a server. Configurations has been made		#
+# for defense in a compeition setting. 							#
+#																#
+# Use at your own risk, and be safe!							#
+# 																#
+# Configuration::  Kent 'picat' Gruber 							#
+#         Guide::  OpenSSH.md 									#
+#																#
+#################################################################
+
+# Disable root Login via SSH
+# PermitRootLogin no
+
+# Allow Only Users 
+# AllowUsers username username username
+
+# Use protocol version 2
+Protocol 2
+
+# Change Listening Port
+Port 31337
+
+# Enable a Warning Banner
+Banner /etc/issue.net
+
+# Super Strict Authentication
+MaxAuthTries 10
+
+# Configure Idle Log Out Timeout Interval
+ClientAliveInterval 300
+ClientAliveCountMax 0
+
+# Disable .rhosts Files
+IgnoreRhosts yes
+RhostsAuthentication no
+RhostsRSAAuthentication no
+
+# Disable host-based authentication
+HostbasedAuthentication no
+
+# Setup public key authentication
+PubkeyAuthentication yes
+
+# Specify authorized keys file
+AuthorizedKeysFile %h/.ssh/authorized_keys
+
+# Setup RSAAuthentication
+RSAAuthentication yes
+
+# Ensure login with SHH key
+PasswordAuthentication no
+
+# Change Login Grace Time (LoginGraceTime)
+LoginGraceTime 1m
+
+# Disable Empty Passwords
+PermitEmptyPasswords no
+
+# Do Not Allow Users to Set Environment Options
+PermitUserEnvironment no
+
+# Show last login
+PrintLastLog yes
+
+# Disable UseDNS
+UseDNS no
+
+# Set maximum startup connections
+MaxStartups 2
+
+# Disable Forwarding
+AllowTcpForwarding no
+X11Forwarding no
+
+# Log More Information
+LogLevel VERBOSE
+
+# Enforce strict mode
+StrictModes yes
+
+# Syslog facility code for logging SSH messages
+SyslogFacility AUTH
+
+# Display Message of the Day
+PrintMotd yes
+
+# Privilege Separation
+# UsePrivilegeSeparation sandbox
+
+# Disable Tunneling
+PermitTunnel no
+
+# Pid File
+PidFile /var/run/sshd.pid
+
+# Compression
+Compression delayed
+
+# hash algorithm when logging key fingerprints
+FingerprintHash sha256
+
+# message authentication code algorithm
+MACs hmac-sha2-512
+
+# PubkeyAcceptedKeyTypes
+PubkeyAcceptedKeyTypes ssh-rsa
+
+# Log SFTP
+Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
+
+# Specifies the ciphers allowed
+Ciphers aes256-ctr
+
