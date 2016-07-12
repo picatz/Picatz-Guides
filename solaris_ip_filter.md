@@ -1,6 +1,8 @@
 Solaris IP Filter
+=================
 
 Open source IP Filter terms
+---------------------------
 /usr/lib/lpf/IPFILTER.LICENCE
 
 Managed by the SMF services: svc:/network/pfil and svc:/network/ipfilter
@@ -41,9 +43,10 @@ IP Filter includes a directory called "/etc/ipf
  * ipnat.conf
  * ippool.conf
 
+________________________________________________________________________________________________________________________________
 
 EDITING SOLARIS IP FILTER CONFIGURATION FILES
-
+---------------------------------------------
 To create a configuration file for packet filtering rules edit the "ipf.conf" file. /etc/ipf/ipf.conf
  * Uses the packet filtering rules that you put in to the ipf.conf file.
  * If you do not want the filtering rules loaded at boot-time, put the ipf.conf file in a location of your choice then activate with
@@ -62,26 +65,29 @@ To create a configuration file for address pools edit the "ippool.conf" file. /e
 If you do not want the pool of addresses loaded at boot-time, put the ippool.conf file in a location of your choice 
   then activate with "ippool" command
 
-Example: IP FILTER HOST CONFIGURATION
+________________________________________________________________________________________________________________________________
 
-*#*1 pass and log everything by default
+Example: IP FILTER HOST CONFIGURATION
+-------------------------------------
+
+ *#* pass and log everything by default
 pass in log on elx10 all
 pass out log on elx10 all
 
-*#*1 block, but don't log, incoming packets from other reserved addresses
+ *#* block, but don't log, incoming packets from other reserved addresses
 block in quick on elx10 from 10.0.0.0/8 to any
 block in quick on elx10 from 172.16.0.0/12 to any
 
-*#*1 block and log untrusted internal IPs. 0/32 is notation that replaces
-*#*1 address of the machine running Solaris IP Filter.
+ *#* block and log untrusted internal IPs. 0/32 is notation that replaces
+ *#* address of the machine running Solaris IP Filter.
 block in log quick from 192.168.1.15 to <thishost>
 block in log quick from 192.168.1.43 to <thishost>
 
-*#*1block and log X11 (port 6000) and remote procedure call
-*#*1 and portmapper (port 111) attempts
+ *#* block and log X11 (port 6000) and remote procedure call
+ *#* and portmapper (port 111) attempts
 block in log quick on elx10 proto tcp from any to elx10/32 port = 6000 keep state
 block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep state
-
+___________________________________________________________________________________
 1. Allow everything to pass into and out of the elxl interface.
 2. Blocks any incoming packets from the private address spaces 10.0.0.0 and 172.16.0.0 from entering the firewall.
 3. Blocks specific internal addresses form the host machine.
@@ -89,10 +95,11 @@ block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep s
 
 
 Configuring Packet Filtering Rules
+----------------------------------
 
 action [in|out] option keyword, keyword...
 
-1. Each rule begins with an action. Applies action to the packet if the packet matches the rule.
+ * Each rule begins with an action. Applies action to the packet if the packet matches the rule.
 
 block
 
@@ -122,9 +129,9 @@ preauth
 
 	Requests that the filter look at a pre-authenticated list to determine what to do with the packet.
 
-2. Next word must be "in" or "out." Determines whether the packet filtering rule is applied to an incoming packet or an outgoing packet.
+ * Next word must be "in" or "out." Determines whether the packet filtering rule is applied to an incoming packet or an outgoing packet.
 
-3. Choose from a list of options. If you use more than one option, they must be in the order shown:
+ * Choose from a list of options. If you use more than one option, they must be in the order shown:
 
 log
 
@@ -144,7 +151,7 @@ to {interface name}
 
 	Moves the packet to an outbound queue on {interface name}
 
-4. After specifying the options, you can choose from a list of keywords that determine whether the packet matches the rule.
+ * After specifying the options, you can choose from a list of keywords that determine whether the packet matches the rule.
 
 Any packet that does not match any rule in the configuration file is passed through the filter.
 
@@ -193,8 +200,9 @@ group {number}
 
 EX: Block incoming traffic from the IP address 192.168.0.0/16
 block in quick from 192.168.0.0/16 to any
-
+________________________________________________________________________________________________________________________________
 IP Filter's Nat Feature
+-----------------------
 
 NAT sets up mapping rules that translate source and destination IP addresses into other Internet or intranet addresses. These rules
 Modify the source and destination addresses of incoming or outgoing IP packets and send the packets on. Use NAT to redirect traffic
@@ -204,7 +212,7 @@ Use "ipnat" command to work with NAT rule list.
 You can create NAT rules either at the command line using the "ipnat" command or in the NAT config. file. 
 "/etc/ipf/ipnat.conf"
 
-1. Each rule begins with the following commands:
+ * Each rule begins with the following commands:
 
 map
 
@@ -223,9 +231,9 @@ map-block
 	Establishes static IP-address-based translation. Based on an algorithm that forces addresses to be translation
 	into a destination range.
 
-2. Following the command, the next word is the interface name, such as "hme0"
+ * Following the command, the next word is the interface name, such as "hme0"
 
-3. Next, you can choose form a variety of parameters, which determine the NAT configuration:
+ * Next, you can choose form a variety of parameters, which determine the NAT configuration:
 
 ipmask
 
@@ -243,12 +251,10 @@ EX: Rewrite a packet that goes out on the "de0" device with a source address of 
 address as 10.1.0.0/16
 map de0 192.168.1.0/24 -> 10.1.0.0/16
 
-
-
-
-
+________________________________________________________________________________________________________________________________
 
 IP Filter's Address Pools Feature
+---------------------------------
 
 Address pools establish a single reference that is used to name a group of address/netmask pairs. Provide processes to reduce the time
 needed to math IP addresses with rules.
@@ -262,16 +268,17 @@ table role = {role-name} type = {storage-format} number = {reference-number}
 
 	Specifies the reference number that is used by the filtering rule.
 
-# ipfstat -io
+*#* ipfstat -io
 empty list for ipfilter(out)
 block in from pool/13(!) to any
 
 Even if you add the pool later, the addition of the pool does not update the kernel rule set. You also need to reload the rules
 	file that references the pool. Check "ippool(4)" man page for more info.
 
+________________________________________________________________________________________________________________________________
 
-
-Solaris 10 7/07 release: 
+Solaris 10 7/07 release:
+-----------------------
 
 Packet filter hooks replace the "pfil" module to enable Oracle Soalris IP filter. The use of packet filter hooks streamlines the procedure
 	to enable Oracle Solaris IP filter. Through these hooks, Oracle Solaris IP Filter uses pre-reouting (input) and post-routing (output)
@@ -282,8 +289,10 @@ Packet filter hooks eliminate the need for the "pfil" module. The following have
  * pfil daemon
  * svc:/network/pfil SMF service
 
+________________________________________________________________________________________________________________________________
 
 MAN PAGES
+---------
 
 ipf(1M)
 
@@ -333,5 +342,5 @@ ndd(1M)
 	Displays current filtering parameters of the "pfil" STREAMS module and the current values of the tuanble paramaters.
 
 
- * It was not possible to think except with ones brain, no one could stand outside himself in order to check the functioning of his inner processes.
- Stanislaw Lem, Solaris
+ "It was not possible to think except with ones brain, no one could stand outside himself in order to check the functioning of his inner processes."
+ 	Stanislaw Lem, Solaris
