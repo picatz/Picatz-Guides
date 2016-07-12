@@ -675,9 +675,109 @@ Configuration for you OpenSSH Server should come in roughly four phases:
 
 The following are configurations for your OpenSSH Client to help keep it secure / make your life easier. '/etc/ssh/ssh_config'; and the SSH connection may will have to be restarted to apply changes. 
 
+#### Restrict to IPv4 Only
 
+Specifies which address family to use when  connecting. Valid arguments are ``any'', ``inet'' (use IPv4 only), or ``inet6'' (use IPv6 only).  The default is ``any''.
 
+```
+AddressFamily inet
+```
 
+#### CanonicalizeMaxDots
+
+Specifies the maximum number of dot characters in a hostname before canonicalization is disabled.  The default, ``1'', allows a single dot (i.e. hostname.subdomain).
+
+```
+CanonicalizeMaxDots 1
+```
+
+#### CheckHostIP
+
+If this flag is set to ``yes'', ssh(1) will additionally check the host IP address in the known_hosts file. This allows ssh to detect if a host key changed due to DNS spoofing and will add addresses of destination hosts to ~/.ssh/known_hosts in the process, regardless of the setting of StrictHostKeyChecking. If the option is set to ``no'', the check will not be executed. The default is ``no''.
+
+```
+CheckHostIP yes
+```
+
+#### Ciphers
+
+Specifies the ciphers allowed for protocol  version 2 in order of preference.  Multiple ciphers must be comma-separated. If the specified value begins with a `+' character, then the specified ciphers will be appended to the default set instead of replacing them.
+
+```
+Ciphers aes256-ctr
+```
+
+#### Ciphers
+
+Specifies whether to use compression.  The  argument must be ``yes'' or ``no''.  The default is ``no''.
+
+```
+Compression yes
+```
+
+#### CompressionLevel
+
+Specifies the compression level to  use if compression is enabled. The argument must be an integer from 1 (fast) to 9 (slow, best). The default level is 6, which is good for most applications. The meaning of the values is the same as in gzip(1). Note that this option applies to protocol version 1 only.
+
+```
+CompressionLevel 5
+```
+
+#### ConnectionAttempts
+
+Specifies the number of tries (one  per second) to make before exiting. The argument must be an integer. This may be useful in scripts if the connection sometimes fails.  The default is 1.
+
+```
+ConnectionAttempts 1
+```
+
+#### LogLevel
+
+Gives the verbosity level that is used when logging messages from the ssh client. 
+
+```
+LogLevel VERBOSE
+```
+
+#### MACs
+
+Specifies the available MAC (message authentication code) algorithms.  The MAC algorithm is used for data integrity protection. Multiple algorithms must be comma-separated.  If the specified value begins with a `+' character, then the specified algorithms will be appended to the default set instead of replacing them.
+
+```
+MACs hmac-sha2-512 
+```
+
+#### NumberOfPasswordPrompts
+
+Specifies the number of password prompts before giving up. The argument to this keyword must be an integer. The default is 3.
+
+```
+NumberOfPasswordPrompts 3
+```
+
+#### NumberOfPasswordPrompts
+
+Specifies the number of password prompts before giving up. The argument to this keyword must be an integer. The default is 3.
+
+```
+NumberOfPasswordPrompts 3
+```
+
+#### PasswordAuthentication
+
+Specifies whether to use password authentication. The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''. Can be funny to set this to no for red team if people don't have ssh keys setup. 
+
+```
+PasswordAuthentication yes
+```
+
+#### PermitLocalCommand
+
+Specifies whether to use password authentication. The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''. Can be funny to set this to no for red team if people don't have ssh keys setup. 
+
+```
+PasswordAuthentication yes
+```
 
 ---
 
