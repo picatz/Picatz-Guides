@@ -770,20 +770,12 @@ Specifies whether to use password authentication. The argument to this keyword m
 PasswordAuthentication yes
 ```
 
-#### PermitLocalCommand
-
-Specifies whether to use password authentication. The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''. Can be funny to set this to no for red team if people don't have ssh keys setup. 
-
-```
-PasswordAuthentication yes
-```
-
-#### PasswordAuthentication
+#### PreferredAuthentications
 
 Specifies the order in which the client should try authentication methods. 
 
 ```
-PreferredAuthentications gssapi-with-mic,hostbased,publickey,keyboard-interactive,password
+PreferredAuthentications publickey,hostbased,password,hostbased,keyboard-interactive
 ```
 
 
