@@ -595,7 +595,7 @@ PrintMotd yes
 
 #### Privilege Separation
 
-Separates privileges by creating an unprivileged child process to deal with incoming network traffic.The goal of privilege separation is to prevent privilege escalation by containing any corruption within the unprivileged processes.  The argument must be ``yes'', ``no'', or ``sandbox''.  If UsePrivilegeSeparation is set to ``sandbox'' then the pre-authentication unprivileged process is subject to additional restrictions.  The default is ``sandbox''.
+Separates privileges by creating an unprivileged child process to deal with incoming network traffic.The goal of privilege separation is to prevent privilege escalation by containing any corruption within the unprivileged processes.  The argument must be 'yes', 'no', or ``sandbox''.  If UsePrivilegeSeparation is set to ``sandbox'' then the pre-authentication unprivileged process is subject to additional restrictions.  The default is ``sandbox''.
 
 ```
 UsePrivilegeSeparation sandbox
@@ -619,7 +619,7 @@ PidFile /var/run/sshd.pid
 
 #### Compression
 
-Specifies whether compression is allowed, or delayed until  the user has authenticated successfully.  The argument must be ``yes'', ``delayed'', or ``no''.  The default is ``delayed''.
+Specifies whether compression is allowed, or delayed until  the user has authenticated successfully.  The argument must be 'yes', ``delayed'', or 'no'.  The default is ``delayed''.
 
 ```
 Compression delayed
@@ -635,7 +635,7 @@ FingerprintHash sha256
 
 #### MACs
 
-Specifies the available MAC (message authentication code) algorithms.  The MAC algorithm is used for data integrity protection. Multiple algorithms must be comma-separated.  If the specified value begins with a `+' character, then the specified algorithms will be appended to the default set instead of replacing them.
+Specifies the available MAC (message authentication code) algorithms.  The MAC algorithm is used for data integrity protection. Multiple algorithms must be comma-separated.  If the specified value begins with a '+' character, then the specified algorithms will be appended to the default set instead of replacing them.
 
 ```
 MACs hmac-sha2-512 
@@ -647,7 +647,7 @@ Specifies the maximum number of concurrent  unauthenticated connections to the S
 
 #### PubkeyAcceptedKeyTypes
 
-Specifies the key types that will be accepted for public key authentication as a comma-separated pattern list.  Alternately if the specified value begins with a `+' character, then the specified key types will be appended to the default set instead of replacing them.  The default for this option is:
+Specifies the key types that will be accepted for public key authentication as a comma-separated pattern list.  Alternately if the specified value begins with a '+' character, then the specified key types will be appended to the default set instead of replacing them.  The default for this option is:
 
 ```
 PubkeyAcceptedKeyTypes ssh-rsa
@@ -663,7 +663,7 @@ Subsystem sftp  /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
 
 #### Ciphers
 
-Specifies the ciphers allowed.  Multiple ciphers must be comma-separated.  If the specified value begins with a `+' character, then the specified ciphers will be appended to the default set instead of replacing them.
+Specifies the ciphers allowed.  Multiple ciphers must be comma-separated.  If the specified value begins with a '+' character, then the specified ciphers will be appended to the default set instead of replacing them.
 
 ```
 Ciphers aes256-ctr
@@ -701,7 +701,7 @@ CanonicalizeMaxDots 1
 
 #### Disable ForwardX11
 
-Specifies whether X11 connections will be automatically redirected over the secure channel and DISPLAY set.  The argument must be ``yes'' or ``no''.  The default is ``no''.
+Specifies whether X11 connections will be automatically redirected over the secure channel and DISPLAY set.  The argument must be 'yes' or 'no'.  The default is 'no'.
 
 ```
 CanonicalizeMaxDots no
@@ -709,7 +709,7 @@ CanonicalizeMaxDots no
 
 #### CheckHostIP
 
-If this flag is set to ``yes'', ssh(1) will additionally check the host IP address in the known_hosts file. This allows ssh to detect if a host key changed due to DNS spoofing and will add addresses of destination hosts to ~/.ssh/known_hosts in the process, regardless of the setting of StrictHostKeyChecking. If the option is set to ``no'', the check will not be executed. The default is ``no''.
+If this flag is set to 'yes', ssh will additionally check the host IP address in the known_hosts file. This allows ssh to detect if a host key changed due to DNS spoofing and will add addresses of destination hosts to ~/.ssh/known_hosts in the process, regardless of the setting of StrictHostKeyChecking. If the option is set to 'no', the check will not be executed. The default is 'no'.
 
 ```
 CheckHostIP yes
@@ -717,7 +717,7 @@ CheckHostIP yes
 
 #### Ciphers
 
-Specifies the ciphers allowed for protocol  version 2 in order of preference.  Multiple ciphers must be comma-separated. If the specified value begins with a `+' character, then the specified ciphers will be appended to the default set instead of replacing them.
+Specifies the ciphers allowed for protocol  version 2 in order of preference.  Multiple ciphers must be comma-separated. If the specified value begins with a '+' character, then the specified ciphers will be appended to the default set instead of replacing them.
 
 ```
 Ciphers aes256-ctr
@@ -725,7 +725,7 @@ Ciphers aes256-ctr
 
 #### Ciphers
 
-Specifies whether to use compression.  The  argument must be ``yes'' or ``no''.  The default is ``no''.
+Specifies whether to use compression.  The  argument must be 'yes' or 'no'.  The default is 'no'.
 
 ```
 Compression yes
@@ -757,7 +757,7 @@ LogLevel VERBOSE
 
 #### MACs
 
-Specifies the available MAC (message authentication code) algorithms.  The MAC algorithm is used for data integrity protection. Multiple algorithms must be comma-separated.  If the specified value begins with a `+' character, then the specified algorithms will be appended to the default set instead of replacing them.
+Specifies the available MAC (message authentication code) algorithms.  The MAC algorithm is used for data integrity protection. Multiple algorithms must be comma-separated.  If the specified value begins with a '+' character, then the specified algorithms will be appended to the default set instead of replacing them.
 
 ```
 MACs hmac-sha2-512 
@@ -781,7 +781,7 @@ NumberOfPasswordPrompts 3
 
 #### PasswordAuthentication
 
-Specifies whether to use password authentication. The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''. Can be funny to set this to no for red team if people don't have ssh keys setup. 
+Specifies whether to use password authentication. The argument to this keyword must be 'yes' or 'no'.  The default is 'yes'. Can be funny to set this to no for red team if people don't have ssh keys setup. 
 
 ```
 PasswordAuthentication yes
@@ -797,7 +797,7 @@ PreferredAuthentications publickey,hostbased,password,hostbased,keyboard-interac
 
 #### Protocol
 
-Specifies the protocol versions ssh(1) should support in order of preference. ( Removed 1 in this case. )
+Specifies the protocol versions ssh should support in order of preference. ( Removed 1 in this case. )
 
 ```
 Protocol 2
@@ -813,7 +813,7 @@ PubkeyAcceptedKeyTypes ssh-rsa
 
 #### PubkeyAuthentication
 
-Specifies whether to try public key authentication.  The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''.
+Specifies whether to try public key authentication.  The argument to this keyword must be 'yes' or 'no'.  The default is 'yes'.
 
 ```
 PubkeyAuthentication yes
@@ -821,7 +821,7 @@ PubkeyAuthentication yes
 
 #### PubkeyAuthentication
 
-Specifies whether to try public key authentication.  The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''.
+Specifies whether to try public key authentication.  The argument to this keyword must be 'yes' or 'no'.  The default is 'yes'.
 
 ```
 PubkeyAuthentication yes
@@ -829,7 +829,7 @@ PubkeyAuthentication yes
 
 #### StrictHostKeyChecking
 
-If  this flag is set to ``yes'', ssh(1) will never automatically add host keys to the ~/.ssh/known_hosts file, and refuses to connect to hosts whose host key has changed. This provides maximum protection against trojan horse attacks, though it can be annoying when the /etc/ssh/ssh_known_hosts file is poorly maintained or when connections to new hosts are frequently made. This option forces the user to manually add all new hosts.  If this flag is set to ``no'', ssh will automatically add new host keys to the user known hosts files.  If this flag is set to ``ask'', new host keys will be added to the user known host files only after the user has confirmed that is what they really want to do, and ssh will refuse to connect to hosts whose host key has changed. The host keys of known hosts will be verified automatically in all cases.  The argument must be ``yes'', ``no'', or ``ask''.  The default is ``ask''.
+If  this flag is set to 'yes', ssh will never automatically add host keys to the ~/.ssh/known_hosts file, and refuses to connect to hosts whose host key has changed. This provides maximum protection against trojan horse attacks, though it can be annoying when the /etc/ssh/ssh_known_hosts file is poorly maintained or when connections to new hosts are frequently made. This option forces the user to manually add all new hosts.  If this flag is set to 'no', ssh will automatically add new host keys to the user known hosts files.  If this flag is set to 'ask', new host keys will be added to the user known host files only after the user has confirmed that is what they really want to do, and ssh will refuse to connect to hosts whose host key has changed. The host keys of known hosts will be verified automatically in all cases.  The argument must be 'yes', 'no', or 'ask'.  The default is 'ask'.
 
 ```
 StrictHostKeyChecking yes
@@ -869,7 +869,7 @@ Host example
 
 #### VisualHostKey
 
-If this flag is set to ``yes'', an ASCII art representation of the remote host key fingerprint is printed in addition to the fingerprint string at login and for unknown host keys.
+If this flag is set to 'yes', an ASCII art representation of the remote host key fingerprint is printed in addition to the fingerprint string at login and for unknown host keys.
 
 ```
 VisualHostKey yes
