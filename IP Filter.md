@@ -99,7 +99,7 @@ Configuring Packet Filtering Rules
 
 action [in|out] option keyword, keyword...
 
-1. Each rule begins with an action. Applies action to the packet if the packet matches the rule.
+ * Each rule begins with an action. Applies action to the packet if the packet matches the rule.
 
 block
 
@@ -129,9 +129,9 @@ preauth
 
 	Requests that the filter look at a pre-authenticated list to determine what to do with the packet.
 
-2. Next word must be "in" or "out." Determines whether the packet filtering rule is applied to an incoming packet or an outgoing packet.
+ * Next word must be "in" or "out." Determines whether the packet filtering rule is applied to an incoming packet or an outgoing packet.
 
-3. Choose from a list of options. If you use more than one option, they must be in the order shown:
+ * Choose from a list of options. If you use more than one option, they must be in the order shown:
 
 log
 
@@ -151,7 +151,7 @@ to {interface name}
 
 	Moves the packet to an outbound queue on {interface name}
 
-4. After specifying the options, you can choose from a list of keywords that determine whether the packet matches the rule.
+ * After specifying the options, you can choose from a list of keywords that determine whether the packet matches the rule.
 
 Any packet that does not match any rule in the configuration file is passed through the filter.
 
@@ -212,7 +212,7 @@ Use "ipnat" command to work with NAT rule list.
 You can create NAT rules either at the command line using the "ipnat" command or in the NAT config. file. 
 "/etc/ipf/ipnat.conf"
 
-1. Each rule begins with the following commands:
+ * Each rule begins with the following commands:
 
 map
 
@@ -231,9 +231,9 @@ map-block
 	Establishes static IP-address-based translation. Based on an algorithm that forces addresses to be translation
 	into a destination range.
 
-2. Following the command, the next word is the interface name, such as "hme0"
+ * Following the command, the next word is the interface name, such as "hme0"
 
-3. Next, you can choose form a variety of parameters, which determine the NAT configuration:
+ * Next, you can choose form a variety of parameters, which determine the NAT configuration:
 
 ipmask
 
