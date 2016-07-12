@@ -619,7 +619,7 @@ PidFile /var/run/sshd.pid
 
 #### Compression
 
-Specifies whether compression is allowed, or delayed until  the user has authenticated successfully.  The argument must be 'yes', ``delayed'', or 'no'.  The default is ``delayed''.
+Specifies whether compression is allowed, or delayed until  the user has authenticated successfully.  The argument must be 'yes', 'delayed', or 'no'.  The default is 'delayed'.
 
 ```
 Compression delayed
