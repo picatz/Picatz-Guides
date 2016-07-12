@@ -484,7 +484,7 @@ By default users are allowed to browse the server directories such as /etc/, /bi
 Create a file called '/etc/issue.net', and put in a warning banner. 
 
 ```
-Banner /etc/issue
+Banner /etc/issue.net
 ```
 
 #### Do Not Allow Users to Set Environment Options
@@ -662,14 +662,13 @@ Ciphers aes256-ctr
 
 ---
 
-## Configuring OpenSSH Server
+## Configuring OpenSSH Client
 
 Configuration for you OpenSSH Server should come in roughly four phases:
 
-- 1. You Install OpenSSH Server ( only if needed )
-- 2. You Configure Daemon
-- 4. You Add Banner ( optional )
-- 4. You Restart Service
+- 1. You Install OpenSSH Client
+- 2. You Configure Client
+- 3. You Restart Any Connections using Client
 
 ### /etc/ssh/ssh_config
 
@@ -778,6 +777,18 @@ Specifies whether to use password authentication. The argument to this keyword m
 ```
 PasswordAuthentication yes
 ```
+
+#### PasswordAuthentication
+
+Specifies the order in which the client should try authentication methods. 
+
+```
+PreferredAuthentications gssapi-with-mic,hostbased,publickey,keyboard-interactive,password
+```
+
+
+
+
 
 ---
 
