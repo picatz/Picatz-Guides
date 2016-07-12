@@ -1,21 +1,21 @@
 #################################################################
-#																#
-# FILE : /etc/ssh/sshd_config									#
-# 																#
-# Kent 'picat' Gruber											#
-#																#
-# 青 O p e n S S H   D a e m o n 								#
-#																#
-# This is a blue team configuration for the OpenSSH daemon.		#
-# Configuration should be manually audited before 				#
-# implementing on a server. Configurations has been made		#
-# for defense in a compeition setting. 							#
-#																#
-# Use at your own risk, and be safe!							#
-# 																#
-# Configuration::  Kent 'picat' Gruber 							#
-#         Guide::  OpenSSH.md 									#
-#																#
+#					
+# FILE : /etc/ssh/sshd_config
+# 		
+# Kent 'picat' Gruber
+#	
+# 青 O p e n S S H   D a e m o n 
+#		
+# This is a blue team configuration for the OpenSSH daemon.
+# Configuration should be manually audited before 	
+# implementing on a server. Configurations has been made
+# for defense in a compeition setting. 
+#
+# Use at your own risk, and be safe!
+# 
+# Configuration::  Kent 'picat' Gruber
+#         Guide::  OpenSSH.md
+#																
 #################################################################
 
 # Disable root Login via SSH
