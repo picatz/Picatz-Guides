@@ -1,6 +1,8 @@
 Solaris IP Filter
+=================
 
 Open source IP Filter terms
+---------------------------
 /usr/lib/lpf/IPFILTER.LICENCE
 
 Managed by the SMF services: svc:/network/pfil and svc:/network/ipfilter
@@ -43,7 +45,7 @@ IP Filter includes a directory called "/etc/ipf
 
 
 EDITING SOLARIS IP FILTER CONFIGURATION FILES
-
+---------------------------------------------
 To create a configuration file for packet filtering rules edit the "ipf.conf" file. /etc/ipf/ipf.conf
  * Uses the packet filtering rules that you put in to the ipf.conf file.
  * If you do not want the filtering rules loaded at boot-time, put the ipf.conf file in a location of your choice then activate with
@@ -64,21 +66,21 @@ If you do not want the pool of addresses loaded at boot-time, put the ippool.con
 
 Example: IP FILTER HOST CONFIGURATION
 
-*#*1 pass and log everything by default
+ *#* pass and log everything by default
 pass in log on elx10 all
 pass out log on elx10 all
 
-*#*1 block, but don't log, incoming packets from other reserved addresses
+ *#* block, but don't log, incoming packets from other reserved addresses
 block in quick on elx10 from 10.0.0.0/8 to any
 block in quick on elx10 from 172.16.0.0/12 to any
 
-*#*1 block and log untrusted internal IPs. 0/32 is notation that replaces
-*#*1 address of the machine running Solaris IP Filter.
+ *#* block and log untrusted internal IPs. 0/32 is notation that replaces
+ *#* address of the machine running Solaris IP Filter.
 block in log quick from 192.168.1.15 to <thishost>
 block in log quick from 192.168.1.43 to <thishost>
 
-*#*1block and log X11 (port 6000) and remote procedure call
-*#*1 and portmapper (port 111) attempts
+ *#* block and log X11 (port 6000) and remote procedure call
+ *#* and portmapper (port 111) attempts
 block in log quick on elx10 proto tcp from any to elx10/32 port = 6000 keep state
 block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep state
 
@@ -89,6 +91,7 @@ block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep s
 
 
 Configuring Packet Filtering Rules
+----------------------------------
 
 action [in|out] option keyword, keyword...
 
@@ -195,6 +198,7 @@ EX: Block incoming traffic from the IP address 192.168.0.0/16
 block in quick from 192.168.0.0/16 to any
 
 IP Filter's Nat Feature
+-----------------------
 
 NAT sets up mapping rules that translate source and destination IP addresses into other Internet or intranet addresses. These rules
 Modify the source and destination addresses of incoming or outgoing IP packets and send the packets on. Use NAT to redirect traffic
@@ -245,10 +249,8 @@ map de0 192.168.1.0/24 -> 10.1.0.0/16
 
 
 
-
-
-
 IP Filter's Address Pools Feature
+---------------------------------
 
 Address pools establish a single reference that is used to name a group of address/netmask pairs. Provide processes to reduce the time
 needed to math IP addresses with rules.
@@ -262,7 +264,7 @@ table role = {role-name} type = {storage-format} number = {reference-number}
 
 	Specifies the reference number that is used by the filtering rule.
 
-# ipfstat -io
+*#* ipfstat -io
 empty list for ipfilter(out)
 block in from pool/13(!) to any
 
@@ -271,7 +273,8 @@ Even if you add the pool later, the addition of the pool does not update the ker
 
 
 
-Solaris 10 7/07 release: 
+Solaris 10 7/07 release:
+-----------------------
 
 Packet filter hooks replace the "pfil" module to enable Oracle Soalris IP filter. The use of packet filter hooks streamlines the procedure
 	to enable Oracle Solaris IP filter. Through these hooks, Oracle Solaris IP Filter uses pre-reouting (input) and post-routing (output)
@@ -284,6 +287,7 @@ Packet filter hooks eliminate the need for the "pfil" module. The following have
 
 
 MAN PAGES
+---------
 
 ipf(1M)
 
