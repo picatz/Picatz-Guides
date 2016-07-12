@@ -11,19 +11,19 @@ Breakdown of OpenSSH Suite, visually:
 
 ─── iptables
   ├── ssh
-  │ └──> A replacement for rlogin, rsh and telnet to allow shell access to a remote machine.
+  │   └──> A replacement for rlogin, rsh and telnet to allow shell access to a remote machine.
   ├── scp 
-  │ └──> A replacement for rcp.
+  │   └──> A replacement for rcp.
   ├── sftp
-  │ └──> A replacement for ftp to copy files between computers.
+  │   └──> A replacement for ftp to copy files between computers.
   ├── sshd
-  │ └──> The SSH server daemon.
+  │   └──> The SSH server daemon.
   ├── ssh-keygen
-  │ └──>  A tool to inspect and generate keys that are used for user and host authentication.
+  │   └──>  A tool to inspect and generate keys that are used for user and host authentication.
   ├── ssh-agent + ssh-add
-  │ └──> Utilities help ease authentication by holding keys ready. 
+  │   └──> Utilities help ease authentication by holding keys ready. 
   └── ssh-keyscan
-    └──> Scans a list of hosts and collects their public keys.
+      └──> Scans a list of hosts and collects their public keys.
 ```
 
 ---
@@ -35,20 +35,23 @@ Breakdown of OpenSSH Config, visually ( also actually files in this case ):
 
 ─── ~
   └── .ssh/ ( hidden file )
-    └── authorized_keys
-      └──> Lists the public keys (RSA or DSA) that can be used to log into the user’s account.
+    ├── authorized_keys
+    │   └──> Lists the public keys (RSA or DSA) that can be used to log into the user’s account.
+    └── config 
+        └──> This is the per-user configuration file. Must have strict permissions: read/write for the user
+
 ─── /etc/
   ├── ssh/
   │ ├── sshd_config
-  │ │ └──> OpenSSH server configuration file.
+  │ │   └──> OpenSSH server configuration file.
   │ └── ssh_config
-  │   └──> OpenSSH client configuration file.
+  │     └──> OpenSSH Systemwide client configuration file.
   ├── nologin 
-  │ └──> If this file exists, sshd refuses to let anyone except root log in.
+  │   └──> If this file exists, sshd refuses to let anyone except root log in.
   ├── hosts.allow 
-  │ └──> Access controls list ( to allow ) enforced by tcp-wrappers are defined here.
+  │   └──> Access controls list ( to allow ) enforced by tcp-wrappers are defined here.
   └── hosts.deny
-    └──> Access controls list ( to deny ) enforced by tcp-wrappers are defined here.
+      └──> Access controls list ( to deny ) enforced by tcp-wrappers are defined here.
 ```
 
 ---
@@ -664,11 +667,11 @@ Ciphers aes256-ctr
 
 ## Configuring OpenSSH Client
 
-Configuration for you OpenSSH Server should come in roughly four phases:
+Configuration for you OpenSSH Client should come in roughly three phases:
 
 - 1. You Install OpenSSH Client
 - 2. You Configure Client
-- 3. You Restart Any Connections using Client
+- 3. You Restart Any Connections using that Client
 
 ### /etc/ssh/ssh_config
 
@@ -688,6 +691,14 @@ Specifies the maximum number of dot characters in a hostname before canonicaliza
 
 ```
 CanonicalizeMaxDots 1
+```
+
+#### Disable ForwardX11
+
+Specifies whether X11 connections will be automatically redirected over the secure channel and DISPLAY set.  The argument must be ``yes'' or ``no''.  The default is ``no''.
+
+```
+CanonicalizeMaxDots no
 ```
 
 #### CheckHostIP
@@ -778,11 +789,94 @@ Specifies the order in which the client should try authentication methods.
 PreferredAuthentications publickey,hostbased,password,hostbased,keyboard-interactive
 ```
 
+#### Protocol
 
+Specifies the protocol versions ssh(1) should support in order of preference. ( Removed 1 in this case. )
 
+```
+Protocol 2
+```
+
+#### PubkeyAcceptedKeyTypes
+
+Specifies the key types that will be used for public key authentication as a comma-separated pattern list.
+
+```
+PubkeyAcceptedKeyTypes ssh-rsa
+```
+
+#### PubkeyAuthentication
+
+Specifies whether to try public key authentication.  The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''.
+
+```
+PubkeyAuthentication yes
+```
+
+#### PubkeyAuthentication
+
+Specifies whether to try public key authentication.  The argument to this keyword must be ``yes'' or ``no''.  The default is ``yes''.
+
+```
+PubkeyAuthentication yes
+```
+
+#### StrictHostKeyChecking
+
+If  this flag is set to ``yes'', ssh(1) will never automatically add host keys to the ~/.ssh/known_hosts file, and refuses to connect to hosts whose host key has changed. This provides maximum protection against trojan horse attacks, though it can be annoying when the /etc/ssh/ssh_known_hosts file is poorly maintained or when connections to new hosts are frequently made. This option forces the user to manually add all new hosts.  If this flag is set to ``no'', ssh will automatically add new host keys to the user known hosts files.  If this flag is set to ``ask'', new host keys will be added to the user known host files only after the user has confirmed that is what they really want to do, and ssh will refuse to connect to hosts whose host key has changed. The host keys of known hosts will be verified automatically in all cases.  The argument must be ``yes'', ``no'', or ``ask''.  The default is ``ask''.
+
+```
+StrictHostKeyChecking yes
+```
+
+#### StrictHostKeyChecking
+
+Specifies whether the system should send TCP keepalive messages to the other side.  If they are sent, death of the connection or crash of one of the machines will be properly noticed.  However, this means that connections will die if the route is down temporarily, and some people find it annoying.
+
+```
+TCPKeepAlive yes
+```
+
+#### User
+
+Specifies the user  to log in as.  This can be useful when a different user name is used on different machines.  This saves the trouble of having to remember to give the user name on the command line.
+
+```
+Host example
+    HostName example.com
+    Port 22
+    User root
+    IdentityFile ~/.ssh/pub.key
+```
+
+#### User
+
+Specifies the user  to log in as.  This can be useful when a different user name is used on different machines.  This saves the trouble of having to remember to give the user name on the command line.
+
+```
+Host example
+    HostName example.com
+    Port 22
+    User root
+    IdentityFile ~/.ssh/pub.key
+```
+
+#### VisualHostKey
+
+If this flag is set to ``yes'', an ASCII art representation of the remote host key fingerprint is printed in addition to the fingerprint string at login and for unknown host keys.
+
+```
+VisualHostKey yes
+```
+
+---
+
+## 
 
 
 ---
+
+
 
 ## Helpful Links
 
@@ -791,3 +885,4 @@ PreferredAuthentications publickey,hostbased,password,hostbased,keyboard-interac
 - [Debian Linux Stop SSH User Hacking / Cracking Attacks with DenyHosts Software](http://www.cyberciti.biz/faq/block-ssh-attacks-with-denyhosts/)
 - [Red Hat / Centos Install Denyhosts To Block SSH Attacks / Hacking](http://www.cyberciti.biz/faq/rhel-linux-block-ssh-dictionary-brute-force-attacks/)
 - [Security/Guidelines/OpenSSH](https://wiki.mozilla.org/Security/Guidelines/OpenSSH)
+- [Revoke OpenSSH Keys and Disable User Access](http://www.cyberciti.biz/faq/linux-unix-bsd-apppleosx-revoke-openssh-user-keys/)
