@@ -10,33 +10,50 @@ Managed by the SMF services: svc:/network/pfil and svc:/network/ipfilter
 Provides protection against network-based attacks -> Filters by:
 
 -IP address
+
 -Port
+
 -Protocol
+
 -Network interface
+
 -Traffic direction
+
 -Individual source IP address
+
 -Destination IP address
+
 -Range of IP addresses
+
 -Address pools
 
--Network Address Translation: Translation of a private IP address to a different public IP address, muliple private addresses to a single public one.
+####Network Address Translation: 
+Translation of a private IP address to a different public IP address, muliple private addresses to a single public one.
 
--IP accounting: Input and output rules can be set up, recording number of bytes that pass through. Each time a rule match occurs, the byte count of
- the packet is added to the rule and allows for the collection of statistics
+####IP accounting:
+Input and output rules can be set up, recording number of bytes that pass through. Each time a rule match occurs, the byte count of
+the packet is added to the rule and allows for the collection of statistics
 
--Fragment Cache Check: Fragmented packets are cached by default. If "set defrag off" appears in the rules file. Fragments not cached.
+####Fragment Cache Check:
+Fragmented packets are cached by default. If "set defrag off" appears in the rules file. Fragments not cached.
 
--Packet State Check: If "keep state" is included in a rule, all packets in a specified session are passed or blocked automatically
+####Packet State Check:
+If "keep state" is included in a rule, all packets in a specified session are passed or blocked automatically
 
--Firewall Check: Input/Output rules separately set up. Packet is allowed through IP Filter, into kerne's TCP/IP routines, or out onto the network.
+####Firewall Check: 
+Input/Output rules separately set up. Packet is allowed through IP Filter, into kerne's TCP/IP routines, or out onto the network.
 
--Groups: Write your rule set in a tree fashion.
+####Groups:
+Write your rule set in a tree fashion.
 
--Function: Action to be taken. Block, pass, literal, and send ICMP response.
+####Function:
+Action to be taken. Block, pass, literal, and send ICMP response.
 
--Fast-route: Signals IP Filter to not pass the packet into the UNIX IP stack for routing. Results in a TTL decrement.
+####Fast-route:
+Signals IP Filter to not pass the packet into the UNIX IP stack for routing. Results in a TTL decrement.
 
--IP Authentication: Only passed throught he firewall loops once to prevent double-processing.
+####IP Authentication:
+Only passed throught he firewall loops once to prevent double-processing.
 
 IP Filter includes a directory called "/etc/ipf
  * ipf.conf
@@ -262,9 +279,9 @@ needed to math IP addresses with rules.
 Reside with the ippool.conf file
 Manually activate packet filtering with the ippool command
 
-Configuring Address Pools
+###Configuring Address Pools
 
-table role = {role-name} type = {storage-format} number = {reference-number}
+####table role = {role-name} type = {storage-format} number = {reference-number}
 
 	Specifies the reference number that is used by the filtering rule.
 
