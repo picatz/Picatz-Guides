@@ -2,12 +2,12 @@ Solaris IP Filter
 =================
 
 Open source IP Filter terms
----------------------------
+
 /usr/lib/lpf/IPFILTER.LICENCE
 
-Managed by the SMF services: svc:/network/pfil and svc:/network/ipfilter
+ * Managed by the SMF services: svc:/network/pfil and svc:/network/ipfilter
 
-Provides protection against network-based attacks -> Filters by:
+ * Provides protection against network-based attacks -> Filters by:
 
 -IP address
 
