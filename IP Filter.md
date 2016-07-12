@@ -43,6 +43,7 @@ IP Filter includes a directory called "/etc/ipf
  * ipnat.conf
  * ippool.conf
 
+________________________________________________________________________________________________________________________________
 
 EDITING SOLARIS IP FILTER CONFIGURATION FILES
 ---------------------------------------------
@@ -64,7 +65,10 @@ To create a configuration file for address pools edit the "ippool.conf" file. /e
 If you do not want the pool of addresses loaded at boot-time, put the ippool.conf file in a location of your choice 
   then activate with "ippool" command
 
+________________________________________________________________________________________________________________________________
+
 Example: IP FILTER HOST CONFIGURATION
+-------------------------------------
 
  *#* pass and log everything by default
 pass in log on elx10 all
@@ -83,7 +87,7 @@ block in log quick from 192.168.1.43 to <thishost>
  *#* and portmapper (port 111) attempts
 block in log quick on elx10 proto tcp from any to elx10/32 port = 6000 keep state
 block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep state
-
+___________________________________________________________________________________
 1. Allow everything to pass into and out of the elxl interface.
 2. Blocks any incoming packets from the private address spaces 10.0.0.0 and 172.16.0.0 from entering the firewall.
 3. Blocks specific internal addresses form the host machine.
@@ -196,7 +200,7 @@ group {number}
 
 EX: Block incoming traffic from the IP address 192.168.0.0/16
 block in quick from 192.168.0.0/16 to any
-
+________________________________________________________________________________________________________________________________
 IP Filter's Nat Feature
 -----------------------
 
@@ -247,7 +251,7 @@ EX: Rewrite a packet that goes out on the "de0" device with a source address of 
 address as 10.1.0.0/16
 map de0 192.168.1.0/24 -> 10.1.0.0/16
 
-
+________________________________________________________________________________________________________________________________
 
 IP Filter's Address Pools Feature
 ---------------------------------
@@ -271,7 +275,7 @@ block in from pool/13(!) to any
 Even if you add the pool later, the addition of the pool does not update the kernel rule set. You also need to reload the rules
 	file that references the pool. Check "ippool(4)" man page for more info.
 
-
+________________________________________________________________________________________________________________________________
 
 Solaris 10 7/07 release:
 -----------------------
@@ -285,6 +289,7 @@ Packet filter hooks eliminate the need for the "pfil" module. The following have
  * pfil daemon
  * svc:/network/pfil SMF service
 
+________________________________________________________________________________________________________________________________
 
 MAN PAGES
 ---------
@@ -337,5 +342,5 @@ ndd(1M)
 	Displays current filtering parameters of the "pfil" STREAMS module and the current values of the tuanble paramaters.
 
 
- * It was not possible to think except with ones brain, no one could stand outside himself in order to check the functioning of his inner processes.
- Stanislaw Lem, Solaris
+ "It was not possible to think except with ones brain, no one could stand outside himself in order to check the functioning of his inner processes."
+ 	Stanislaw Lem, Solaris
