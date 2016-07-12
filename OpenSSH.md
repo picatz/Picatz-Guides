@@ -108,7 +108,9 @@ Check if the openssh packages are installed via yum :
 $ yum list installed openssh\*
 ```
 
-Hint : Before blindly running SSH, be sure to check your client a server configurations if possible. 
+##### Hint
+
+Before blindly running SSH, be sure to check your client and server configurations if possible. 
 
 ### Install OpenSSH Server
 
