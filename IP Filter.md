@@ -333,5 +333,5 @@ ndd(1M)
 	Displays current filtering parameters of the "pfil" STREAMS module and the current values of the tuanble paramaters.
 
 
-It was not possible to think except with ones brain, no one could stand outside himself in order to check the functioning of his inner processes.
+ * It was not possible to think except with ones brain, no one could stand outside himself in order to check the functioning of his inner processes.
  Stanislaw Lem, Solaris
