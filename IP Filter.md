@@ -1,6 +1,5 @@
 Solaris IP Filter
 
-
 Open source IP Filter terms
 /usr/lib/lpf/IPFILTER.LICENCE
 
@@ -17,67 +16,6 @@ Provides protection against network-based attacks -> Filters by:
 -Destination IP address
 -Range of IP addresses
 -Address pools
-
-
-
-
-
-<pre>
-
-The IP Filter executes a sequence of steps as the packet is processed:
-IP Filter IN		       IN
-				|
-				V
-			Network address 
-			   translation
-				|	
-				V
-			IP accounting
-				|
-				V
-			Fragment cache check----------
-				|		     |
-				V		     V
-			Packet state check	State table check	     
-				|                    |
-		---------->	V                    |
-	[Rule Groups]	Firewall Check               |
-		<-----------	|<--------------------               
-		<---------------|
-	[Function]		|		     
-		--------------->|
-				|
-				|Pass only
---------------------------------|			
- |
- |		   [KERNEL TCP/IP processing]
- |                              |
- |                              V
- |                          Fragment---------------------
- |                         cache check                  |
- |                              |                       |
- |                              |                       |
- V				V			V
-State table		Packet state check---->	State table check	
-  Check                         |                       |
- |           -------------->    |                       |
- |	[Rule Groups]	Firewall check                  |
- |           <---------------   |                       |
- |                              |                       |
- |				|<-----------------------
- |                              V
- |			IP accounting
- |    				|
- V				V
-Network address		Network address
-translation		translation
- |				| Pass only
- |----------------------------> |
-				V
-			       OUT
-
-
-</pre>
 
 -Network Address Translation: Translation of a private IP address to a different public IP address, muliple private addresses to a single public one.
 
@@ -102,10 +40,6 @@ IP Filter includes a directory called "/etc/ipf
  * ipf.conf
  * ipnat.conf
  * ippool.conf
-
-
-
-
 
 
 EDITING SOLARIS IP FILTER CONFIGURATION FILES
@@ -152,7 +86,6 @@ block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep s
 2. Blocks any incoming packets from the private address spaces 10.0.0.0 and 172.16.0.0 from entering the firewall.
 3. Blocks specific internal addresses form the host machine.
 4. Blocks packets coming in on port 6000 and port 1111.
-
 
 
 Configuring Packet Filtering Rules
@@ -335,10 +268,6 @@ block in from pool/13(!) to any
 
 Even if you add the pool later, the addition of the pool does not update the kernel rule set. You also need to reload the rules
 	file that references the pool. Check "ippool(4)" man page for more info.
-
-
-
-
 
 
 
