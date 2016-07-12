@@ -7,7 +7,7 @@ Open source IP Filter terms
 
  * Managed by the SMF services: svc:/network/pfil and svc:/network/ipfilter
 
- * Provides protection against network-based attacks -> Filters by:
+#####Provides protection against network-based attacks -> Filters by:
 
 -IP address
 
@@ -55,7 +55,7 @@ Signals IP Filter to not pass the packet into the UNIX IP stack for routing. Res
 ####IP Authentication:
 Only passed throught he firewall loops once to prevent double-processing.
 
-IP Filter includes a directory called "/etc/ipf
+IP Filter includes a directory called "/etc/ipf"
  * ipf.conf
  * ipnat.conf
  * ippool.conf
@@ -68,7 +68,7 @@ To create a configuration file for packet filtering rules edit the "ipf.conf" fi
  * Uses the packet filtering rules that you put in to the ipf.conf file.
  * If you do not want the filtering rules loaded at boot-time, put the ipf.conf file in a location of your choice then activate with
  
-"ipf" command
+#####"ipf" command
 
 --If the ipf.conf file is empty this means that the filtering rules are set as:
 pass in all
