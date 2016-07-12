@@ -4,6 +4,12 @@ This is a somewhat comprehensive guide for OpenSSH a suite of tools that serve a
 
 ---
 
+#### Contributed By
+
+[Kent 'picat' Gruber](https://github.com/picatz)
+
+---
+
 #### OpenSSH Suite
 
 ```

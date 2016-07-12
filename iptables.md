@@ -2,6 +2,14 @@
 
 This is a somewhat comprehensive guide for iptables, a command-line application to configure IP packet filter rules in the Linux kernel. Before reading this guide, it's preferred if you read the [iptables man page](http://linux.die.net/man/8/iptables) on your specific system and check that it is installed ( though usually pre-installed on most Linux distributions ). 
 
+---
+
+#### Contributed By
+
+[Kent 'picat' Gruber](https://github.com/picatz)
+
+---
+
 #### Visual Representation
 
 ```
@@ -26,12 +34,11 @@ Breakdown of iptables logic, visually:
 		└── Maybe User-defined chains.
 			└──> Rules
 
-TLDR / GRAPH HARD / ? / ELI5 : There can be more than 1 Table. There are built-in chains. Chains be be built by users. There can be more than on Chain. Chains contain Rules. There can be more than one Rule. 
-
 ```
 
-Thanks to:
-http://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/
+##### TLDR / GRAPH HARD / ? / ELI5 
+
+There can be more than 1 Table. There are built-in chains. Chains be be built by users. There can be more than on Chain. Chains contain Rules. There can be more than one Rule. 
 
 ---
 
@@ -98,7 +105,7 @@ $ rpm -qi iptables | grep "Version"
 
 Run on a Debian 8 box, starting from a user without sudo/root privilege: 
 
-<img src="SetupCheckIptables.gif">
+<img src="resources/iptables/SetupCheckIptables.gif">
 
 
 ---
@@ -930,9 +937,9 @@ done
 
 ## Helpful links.
 
+- [The Beginner’s Guide to iptables, the Linux Firewall](http://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/)
 - [20 Iptables Examples](http://www.cyberciti.biz/tips/linux-iptables-examples.html)
 - [How to Log Linux IPTables Firewall Dropped Packets to a Log File](http://www.thegeekstuff.com/2012/08/iptables-log-packets/)
-- [The Beginner’s Guide to iptables, the Linux Firewall](http://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/)
 - [25 Most Frequently Used Linux IPTables Rules Examples](http://www.thegeekstuff.com/2011/06/iptables-rules-examples/)
 - [dns-iptables-rules](https://github.com/smurfmonitor/dns-iptables-rules)
 - [iptables.sh](https://github.com/suin/iptables/blob/master/iptables.sh)

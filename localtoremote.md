@@ -4,6 +4,12 @@ This is a somewhat comprehensive guide on how to copy files locally stored on yo
 
 ---
 
+#### Contributed By
+
+[Kent 'picat' Gruber](https://github.com/picatz)
+
+---
+
 - Remote server's IP for this guide : 192.168.4.10
 - User for this guide : user 
 

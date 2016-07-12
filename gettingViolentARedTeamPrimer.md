@@ -4,6 +4,12 @@ This is a somewhat comprehensive guide on red team activities and where to use t
 
 ---
 
+#### Contributed By
+
+[Shane Bradfield](https://github.com/l33tLumberjack)
+
+---
+
 - Attackers IP : 192.168.1.20
 - Attackers reverse shell port : 4444
 - Targets IP : 192.168.1.10
