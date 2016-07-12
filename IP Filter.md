@@ -64,21 +64,21 @@ If you do not want the pool of addresses loaded at boot-time, put the ippool.con
 
 Example: IP FILTER HOST CONFIGURATION
 
-# pass and log everything by default
+*#*1 pass and log everything by default
 pass in log on elx10 all
 pass out log on elx10 all
 
-# block, but don't log, incoming packets from other reserved addresses
+*#*1 block, but don't log, incoming packets from other reserved addresses
 block in quick on elx10 from 10.0.0.0/8 to any
 block in quick on elx10 from 172.16.0.0/12 to any
 
-# block and log untrusted internal IPs. 0/32 is notation that replaces
-# address of the machine running Solaris IP Filter.
+*#*1 block and log untrusted internal IPs. 0/32 is notation that replaces
+*#*1 address of the machine running Solaris IP Filter.
 block in log quick from 192.168.1.15 to <thishost>
 block in log quick from 192.168.1.43 to <thishost>
 
-#block and log X11 (port 6000) and remote procedure call
-# and portmapper (port 111) attempts
+*#*1block and log X11 (port 6000) and remote procedure call
+*#*1 and portmapper (port 111) attempts
 block in log quick on elx10 proto tcp from any to elx10/32 port = 6000 keep state
 block in log quick on elx10 proto tcp/udp from any to elx10/32 port = 111 keep state
 
