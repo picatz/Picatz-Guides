@@ -35,10 +35,10 @@
 
 6.	Check Service configs
     1.	Server Manager
-      1.	AD
-      2.	DNS
-      3.	DHCP
-      4.	HTTP (IIS)
+        1.	AD
+        2.	DNS
+        3.	DHCP
+        4.	HTTP (IIS)
 
 7.	Restart services and turn interfaces back on (powershell)
     1.	`Enable-netadapter`
@@ -47,14 +47,14 @@
 
 8.	Audit Logs
     1.	In Local Security Policy > Local Policies > Audit Policy, audit all for failure
-      1.    Block failures
+        1.  Block failures
     2.	Disable netbios
     3.	`netdom query WORKSTATION`
     4.	`netdom query SERVER`
     5.	Host file
-      1.	C:\%SystemRoot%\System32\Dns
+        1.	C:\%SystemRoot%\System32\Dns
 
 9.	Check for other bads
     1.	Watch processes
     2.	Disable sticky keys
-      1.	`Reg add “HKCU\Control Panel\Accessibility\StickyKeys” /v Flags /t REG_SZ /d 506 /f`
+        1.	`Reg add “HKCU\Control Panel\Accessibility\StickyKeys” /v Flags /t REG_SZ /d 506 /f`
