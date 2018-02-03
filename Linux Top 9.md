@@ -19,7 +19,7 @@
     2.	`ps -aux`
     3.	`ps –ef`
     4.	`service <service-name> stop`
-    5.	`netstat –tulpan`
+    5.	`sudo netstat –tulpan`
     6.	`chkconfig --list`
 
 4.	Backup configs for scored service
